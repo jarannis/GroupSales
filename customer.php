@@ -59,17 +59,19 @@ switch($submit){
 		$orgPriContact = $row['FirstName'] . " " . $row['LastName'];
 
 		// Check Tax Exempt status
+		/*
 		if ($row['taxexempt'] == 0){
 			$isTaxExempt = false;
 			$teBoxString = "<input type=checkbox disabled/>";
 		}
-		elseif ($row['taxexempt'] == 1){
+		//elseif ($row['taxexempt'] == 1){
 			$isTaxExempt = true;
 			$teBoxString = "<input type=checkbox checked disabled/>";
 		}
 		else {
 			$isTaxExempt = false;
 		}
+		*/
 
 		$taxID = $row['teid'];
 		$priContactName = $row['FirstName'] . " " . $row['LastName'];
