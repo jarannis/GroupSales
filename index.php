@@ -170,7 +170,7 @@ HTML;
 			<h3>Search by Contact Name:</h3>
 			<form name="searchByCust" action="index.php" method="post">
 			<input type="hidden" name="sType" value="custByContName" />
-			Partial Organization Name<br/>
+			Partial Customer First or Last Name<br/>
 			<input type="text" name="custSearchName" />
 			<button type="submit" name="submit" value="Submit">Search</button>
 			</form>
@@ -186,12 +186,12 @@ function buildCustomersTable($customerResults){
 	echo '<table>';
 	// Table Header, First row
 	echo '<tr">
-	<td>ID</td>
-	<td>Organization Type</td>
-	<td>Organization Name</td>
-	<td>Contact Name</td>
-	<td>City</td>
-	<td>Zip Code</td>
+	<th>ID</th>
+	<th>Organization Type</th>
+	<th>Organization Name</th>
+	<th>Contact Name</th>
+	<th>City</th>
+	<th>Zip Code</th>
 	<tr/>';
 
 	// Data Start
