@@ -45,36 +45,35 @@ switch($submit){
 		break;
 	case "submit":
 		include "./conf/mysql.conf.php";
-		$queryBuild = "SELECT * FROM `Customers` WHERE `CustId` = '$orgID'";
-		$result = mysqli_query($link, $queryBuild);
-		$row = mysqli_fetch_assoc($result);
-
-		$orgName = $row['Organization'];
-		$orgPhone = $row['workphone'];
-		$orgAddr = $row['ShippingAddress'];
-		$orgAddr2 = $row['ShippingAddress2'];
-		$orgCity = $row['ShippingCity'];
-		$orgState = $row['ShippingState'];
-		$orgZip = $row['ShippingZip'];
-		$orgPriContact = $row['FirstName'] . " " . $row['LastName'];
+		$orgQueryBuild = "SELECT * FROM `customers` WHERE `CustId` = '$orgID'";
+		$orgResult = mysqli_query($link, $orgQueryBuild);
+		$orgRow = mysqli_fetch_assoc($orgResult);
+		$orgName = $orgRow['Organization'];
+		$orgPhone = $orgRow['workphone'];
+		$orgAddr = $orgRow['ShippingAddress'];
+		$orgAddr2 = $orgRow['ShippingAddress2'];
+		$orgCity = $orgRow['ShippingCity'];
+		$orgState = $orgRow['ShippingState'];
+		$orgZip = $orgRow['ShippingZip'];
+		$orgPriContact = $orgRow['FirstName'] . " " . $orgRow['LastName'];
 
 		// Check Tax Exempt status
-		/*
-		if ($row['taxexempt'] == 0){
+		
+		if ($orgRow['taxexempt'] == 0){
 			$isTaxExempt = false;
 			$teBoxString = "<input type=checkbox disabled/>";
 		}
-		//elseif ($row['taxexempt'] == 1){
+		elseif ($orgRow['taxexempt'] == 1){
 			$isTaxExempt = true;
 			$teBoxString = "<input type=checkbox checked disabled/>";
 		}
 		else {
 			$isTaxExempt = false;
 		}
-		*/
+		
 
-		$taxID = $row['teid'];
-		$priContactName = $row['FirstName'] . " " . $row['LastName'];
+		$taxID = $orgRow['teid'];
+		$priContactName = $orgRow['FirstName'] . " " . $orgRow['LastName'];
 
 		// parse Organization Type
 		$typeQuery = "SELECT * FROM `organizationtypes` WHERE `OrganizationTypeID` = '{$row['Organizationtypeid']}'";
@@ -83,7 +82,7 @@ switch($submit){
 		$orgType = $typeRow['OrganizationTypeDescription'];
 
 		// Display Customer Information
-		echo <<<HTML
+		echo "
 		<h3>Organization Information</h3>
 		<table>
 		<tr><td>Organization ID:</td><td>$orgID</td></tr>
@@ -94,16 +93,14 @@ switch($submit){
 		<tr><td>Address:</td><td>$orgAddr</td></tr>
 		<tr><td>Address(continued):</td><td>$orgAddr2</td></tr>
 		<tr><td>City/State/Zip</td><td>$orgCity ,$orgState $orgZip</td></tr>
-		</table><br/>
-		Show:
-		<form name="Show Type" action="customer.php" method="post">
-		<input type="hidden" name="OrgID" value="$orgID">
+		</table><br/>";
+		echo "Show:
+		<form name=\"Show Type\" action=\"customer.php\" method=\"post\">
+		<input type=\"hidden\" name=\"OrgID\" value=\"$orgID\">
 		$showBubbles
-		<button type="submit" name="submit" value="submit">Submit</button>
-		</form>
+		<button type=\"submit\" name=\"submit\" value=\"submit\">Submit</button>
+		</form>";
 
-
-HTML;
 		switch($show){
 			case "orders":
 				buildOrdersTable($orgID);
