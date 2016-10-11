@@ -56,6 +56,7 @@ switch($submit){
 		$orgState = $orgRow['ShippingState'];
 		$orgZip = $orgRow['ShippingZip'];
 		$orgPriContact = $orgRow['FirstName'] . " " . $orgRow['LastName'];
+		$orgTypeID = $orgRow['Organizationtypeid'];
 
 		// Check Tax Exempt status
 		
@@ -76,7 +77,7 @@ switch($submit){
 		$priContactName = $orgRow['FirstName'] . " " . $orgRow['LastName'];
 
 		// parse Organization Type
-		$typeQuery = "SELECT * FROM `organizationtypes` WHERE `OrganizationTypeID` = '{$row['Organizationtypeid']}'";
+		$typeQuery = "SELECT * FROM `organizationtypes` WHERE `OrganizationTypeID` = '$orgTypeID'";
 		$typeResult = mysqli_query($link, $typeQuery);
 		$typeRow = mysqli_fetch_assoc($typeResult);
 		$orgType = $typeRow['OrganizationTypeDescription'];
