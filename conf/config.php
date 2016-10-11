@@ -6,11 +6,33 @@
  * and open the template in the editor.
  */
 
-// GLOBAL DEBUG SETTING.
-$debug = true;
+// include getcwd() . "/resource/debug.php";
+
+// Show debug messages as they appear (TRUE) or log only to variable $debug.log (FALSE)
+$showDebugMessagesAsOccur = true;
+
+$debug = false;
+$log = "";
+$usesDB = true;
+$dbType = "mysql";
+
+
+$log = "Successfully found and loaded ./conf/config.php <br />";
+if ($debug == true) echo $log;
+$log = "Current Working Directory = " . getcwd() . "<br />";
+if ($debug == true) echo $log;
+
+$confLocation = getcwd() . "/conf";
+
 
 if($usesDB == true){
     if($dbType == "mysql"){
-        require_once "./mysql.conf.php";
+        include $confLocation."/mysql.conf.php";
     }
 }
+
+$log = "Returned to config.php<br/>";
+if ($debug == true){
+	echo $log;
+}
+
