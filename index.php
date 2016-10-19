@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['isloggedin'])){	
+	header( 'Location: ./login.php?fromlocation=index' );
+}
 
 /* 
  * To change this license header, choose License Headers in Project Properties.

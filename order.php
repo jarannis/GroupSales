@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['isloggedin'])){	
+	header( 'Location: ./login.php?fromlocation=order' );
+}
 	// Order viewing window. Opens in a pop-up. Not accessible directly.
 
 echo <<<HTML

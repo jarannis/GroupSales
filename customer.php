@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if(!isset($_SESSION['isloggedin'])){	
+	header( 'Location: ./login.php?fromlocation=customer' );
+}
 // display listing by Customer
 
 echo <<<HTML
