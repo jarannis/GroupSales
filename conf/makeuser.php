@@ -56,6 +56,7 @@ Admin Password : <input type="password" name="adminPass"><br/>
 </form>
 
 HTML;
+
 }
 
 function verifyAdmin($aUser, $aPassword){
