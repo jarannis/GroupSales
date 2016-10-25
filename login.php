@@ -69,7 +69,7 @@ function printMenu($redirect){
 
 echo <<<HTML
 
-<form name="gslogin" target="login.php" method="post">
+<form name="gslogin" action="login.php" method="post">
 Username: <input type="text" name="gsloginuname"/>
 Password: <input type="password" name="gsloginpass"/>
 <input type="hidden" name="fromlocation" value="$redirect"/>
