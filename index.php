@@ -3,7 +3,10 @@ session_start();
 if(!isset($_SESSION['isloggedin'])){	
 	header( 'Location: ./login.php?fromlocation=index' );
 }
-
+if($_SESSION['admin'] == 1){
+	echo ('<a href="./conf/makeuser.php">Create User</a> ');
+}
+echo ('<a href="./killsession.php">Log Out</a> <br/>');
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -77,13 +80,6 @@ switch ($searchType){
 		echo '<form name="searchByZip" action="index.php" method="post">';
 		echo '<input type="hidden" name="sType" value="custByZip" />';
 				// radio button default if search type "range"
-		if ($zipSearchType == "range"){
-			echo '<input type="radio" name="zipSearchType" value="range" checked="checked" /> Zip Code Range ';
-		}
-		else {
-			echo '<input type="radio" name="zipSearchType" value="range" /> Zip Code Range ';
-		}
-		echo '<input type="text" name="zipRangeStart" value="'.$searchStartRange.'" /> - <input type="text" name="zipRangeEnd" value="'.$searchEndRange.'" /><br/><br/>';
 		if ($zipSearchType == "singleZip"){
 			echo '<input type="radio" name="zipSearchType" value="singleZip" checked="checked" /> Single Zip Code ';
 		}
@@ -91,6 +87,13 @@ switch ($searchType){
 			echo '<input type="radio" name="zipSearchType" value="singleZip" /> Single Zip Code ';	
 		}
 		echo '<input type="text" name="zipCode" value="'.$searchSingleZip.'" /><br/><br/>';
+		if ($zipSearchType == "range"){
+			echo '<input type="radio" name="zipSearchType" value="range" checked="checked" /> Zip Code Range ';
+		}
+		else {
+			echo '<input type="radio" name="zipSearchType" value="range" /> Zip Code Range ';
+		}
+		echo '<input type="text" name="zipRangeStart" value="'.$searchStartRange.'" /> - <input type="text" name="zipRangeEnd" value="'.$searchEndRange.'" /><br/><br/>';
 		echo '<input type="submit" name="submit" value="Submit"/>';
 		echo '</form><br/><br/>';
 		// END FORM BEGIN RESULTS

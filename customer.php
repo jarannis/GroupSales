@@ -1,8 +1,12 @@
 <?php
 session_start();
 if(!isset($_SESSION['isloggedin'])){	
-	header( 'Location: ./login.php?fromlocation=customer' );
+	header( 'Location: ./login.php?fromlocation=index' );
 }
+if($_SESSION['admin'] == 1){
+	echo ('<a href="./conf/makeuser.php">Create User</a> ');
+}
+echo ('<a href="./killsession.php">Log Out</a> <br/>');
 // display listing by Customer
 
 echo <<<HTML

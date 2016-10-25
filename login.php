@@ -50,9 +50,11 @@ else {
 		if($count > 0){
 			$row = mysqli_fetch_assoc($result);
 			$friendlyName = $row['friendlyName'];
+			$admin = $row['admin'];
 			echo "Welcome $friendlyName";
 			$_SESSION['isloggedin'] = true;
 			$_SESSION['loggedfriendlyname'] = $friendlyName;
+			$_SESSION['admin'] = $admin;
 			header('Location: ' . $redirectloc);
 		}
 		else{
