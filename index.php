@@ -36,12 +36,11 @@ else {
 switch ($searchType){
 	// if NO SEARCH TYPE IS FOUND
 	case "none":
-		echo 'Legacy Group Sales Search: <br/>';
-		echo 'Search: <br/> ';
+		echo 'Legacy Group Sales Search: <br/> ';
 		echo '<form name="SearchType" action="index.php" method="post">';
-		echo '<input type="radio" name="sType" value="custByZip"> Customer by Zip Code<br/>';
-		echo '<input type="radio" name="sType" value="custByName"> Customer By Name<br/>';
-		echo '<input type="radio" name="sType" value="custByContName"> Customer By Contact Name<br/>';
+		echo '<label for="custZipRadio"><input id="custZipRadio" type="radio" name="sType" value="custByZip"/>Customer by Zip Code</label><br/>';
+		echo '<label for="custNameRadio"><input id="custNameRadio" type="radio" name="sType" value="custByName"> Customer By Name</label><br/>';
+		echo '<label for="custContRadio"><input id="custContRadio" type="radio" name="sType" value="custByContName"> Customer By Contact Name</label><br/>';
 		echo '<input type="submit" name="submit" value="Submit" />';
 		echo '</form><form name="orderRedirect" action="order.php" method="post">
 		<button type="submit" name="submit" value="showForm">Search by Order instead</button>
