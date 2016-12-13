@@ -1,4 +1,9 @@
 <?php
+// include "./resource/onload.php";
+
+echo $currentPage = $_SERVER['PHP_SELF'];
+
+
 session_start();
 if(!isset($_SESSION['isloggedin'])){	
 	header( 'Location: ./login.php?fromlocation=index' );
